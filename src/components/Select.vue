@@ -271,7 +271,7 @@
 
       <span class="selected-tag" v-for="option in valueAsArray" v-bind:key="option.index">
         <span v-if="!htmlLabels">{{ getOptionLabel(option) }}</span>
-        <span v-if="htmlLabels" :innerHTML="getOptionLabel(option)"></span>
+        <span v-if="htmlLabels" v-html="getOptionLabel(option)"></span>
         <button v-if="multiple" @click="deselect(option)" type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -307,7 +307,7 @@
         <li v-for="(option, index) in filteredOptions" v-bind:key="index" :class="{ active: isOptionSelected(option), highlight: index === typeAheadPointer }" @mouseover="typeAheadPointer = index">
           <a @mousedown.prevent="select(option)">
             <span v-if="!htmlLabels">{{ getOptionLabel(option) }}</span>
-            <span v-if="htmlLabels" :innerHTML="getOptionLabel(option)"></span>
+            <span v-if="htmlLabels" v-html="getOptionLabel(option)"></span>
           </a>
         </li>
         <li v-if="!filteredOptions.length" class="no-options">
