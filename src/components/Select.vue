@@ -270,7 +270,8 @@
     <div ref="toggle" @mousedown.prevent="toggleDropdown" class="dropdown-toggle">
 
       <span class="selected-tag" v-for="option in valueAsArray" v-bind:key="option.index">
-        {{ getOptionLabel(option) }}
+        <span v-if="!htmlLabels">{{ getOptionLabel(option) }}</span>
+        <span v-if="htmlLabels" :innerHTML="getOptionLabel(option)"></span>
         <button v-if="multiple" @click="deselect(option)" type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -472,6 +473,16 @@
        * @type {Boolean}
        */
       pushTags: {
+        type: Boolean,
+        default: false
+      },
+
+      /**
+       * When true, labels will be parsed as HTML
+       * instead as of plain strings.
+       * @type {Boolean}
+       */
+      htmlLabels: {
         type: Boolean,
         default: false
       },
