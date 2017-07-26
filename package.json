@@ -1,6 +1,6 @@
 {
   "name": "vue-ener-select",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A native Vue.js component that provides similar functionality to Select2 without the overhead of jQuery.",
   "author": "René Morales <renemoraales@gmail.com>",
   "private": false,

@@ -489,6 +489,15 @@
       },
 
       /**
+       * When true, options won't be filtered.
+       * @type {Boolean}
+       */
+      disableFiltering: {
+        type: Boolean,
+        default: false
+      },
+
+      /**
        * User defined function for adding Options
        * @type {Function}
        */
@@ -857,6 +866,7 @@
        * @return {array}
        */
       filteredOptions() {
+        if (this.disableFiltering) return this.mutableOptions;
         let options = this.mutableOptions.filter((option) => {
           if (typeof option === 'object' && option.hasOwnProperty(this.label)) {
             return option[this.label].toLowerCase().indexOf(this.search.toLowerCase()) > -1
